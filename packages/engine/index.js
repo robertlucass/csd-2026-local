@@ -12,6 +12,7 @@ class GameEngine {
       display_word: this._getInitialDisplayWord(word),
       guesses: [],
       message: 'Adivinhe uma letra',
+      timer: 30,
     };
   }
 
