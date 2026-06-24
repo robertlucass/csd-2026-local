@@ -26,6 +26,7 @@ class GameEngine {
       ...currentGameState,
       guesses,
       lives,
+      status: lives === 0 ? 'LOST' : 'WON',
       message: isCorrect
         ? `Boa! A letra ${letter} está na palavra.`
         : `A letra ${letter} não está na palavra.`,
