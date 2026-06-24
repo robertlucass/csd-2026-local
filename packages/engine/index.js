@@ -16,6 +16,13 @@ class GameEngine {
   }
 
   guessLetter(currentGameState, letter) {
+    if (letter.length !== 1) {
+      return {
+        ...currentGameState,
+        message: 'Palpite invalido',
+      };
+    }
+
     const guesses = [...currentGameState.guesses, letter];
     const isCorrect = currentGameState.word.includes(letter);
     const lives = isCorrect

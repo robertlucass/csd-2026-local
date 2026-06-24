@@ -60,24 +60,23 @@ Then(
   },
 );
 
-When('eu palpito as letras {string}', function (string) {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+
+When("eu palpito as letras {string}", function (letras) {
+  currentGameState = gameEngine.guessLetter(currentGameState, letras);
 });
 
+
 Then('meu número de vidas deve continuar o mesmo', function () {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+  assert.strictEqual(currentGameState.lives, initialGameState.lives);
 });
 
 Then('eu devo ver uma mensagem dizendo que o palpite está incorreto', function () {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+  assert.match(currentGameState.message, /Palpite invalido/);
 });
 
-Then('o status do jogo deve permanecer {string}', function (string) {
+Then('o status do jogo deve permanecer {string}', function (status) {
   // Write code here that turns the phrase above into concrete actions
-  return 'pending';
+  assert.strictEqual(currentGameState.status, status);
 });
 
 Then('as letras {string} devem ser adicionadas aos meus palpites', function (letras) {
