@@ -22,11 +22,21 @@ class GameEngine {
       ? currentGameState.lives
       : currentGameState.lives - 1;
 
+    const hasWon = currentGameState.word.split('').every(char => guesses.includes(char));
+
+    let status = 'RUNNING';
+
+    if (lives === 0) {
+      status = 'LOST';
+    } else if (hasWon) {
+      status = 'WON';
+    }
+
     const newGameState = {
       ...currentGameState,
       guesses,
       lives,
-      status: lives === 0 ? 'LOST' : 'WON',
+      status: status,
       message: isCorrect
         ? `Boa! A letra ${letter} está na palavra.`
         : `A letra ${letter} não está na palavra.`,

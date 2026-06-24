@@ -16,10 +16,17 @@
     "test": "jest",
     "tdd:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:bdd": "mkdir -p reports && cucumber-js",
+    "test:bdd": "cucumber-js",
     "test:all": "npm run test && npm run test:bdd"
   },
-  "keywords": ["forca", "hangman", "game", "education", "agile", "csd"],
+  "keywords": [
+    "forca",
+    "hangman",
+    "game",
+    "education",
+    "agile",
+    "csd"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -28,12 +35,19 @@
   },
   "jest": {
     "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@forca/engine/(.*)$": "<rootDir>/packages/engine/$1"
+    },
     "collectCoverageFrom": [
       "packages/engine/**/*.js",
       "apps/cli/**/*.js",
       "!**/node_modules/**"
     ],
     "coverageDirectory": "coverage",
-    "coverageReporters": ["text", "lcov", "html"]
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
   }
 }

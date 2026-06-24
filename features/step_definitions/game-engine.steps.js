@@ -60,6 +60,26 @@ Then(
   },
 );
 
+When('eu palpito as letras {string}', function (string) {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+
+Then('meu número de vidas deve continuar o mesmo', function () {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+
+Then('eu devo ver uma mensagem dizendo que o palpite está incorreto', function () {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+
+Then('o status do jogo deve permanecer {string}', function (string) {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+
 Then('as letras {string} devem ser adicionadas aos meus palpites', function (letras) {
   // "letras" é uma lista separada por vírgula, ex.: "a, b, c"
   const letrasEsperadas = letras.split(",").map((l) => l.trim());
@@ -70,3 +90,6 @@ Then('as letras {string} devem ser adicionadas aos meus palpites', function (let
     );
   });
 });
+
+
+

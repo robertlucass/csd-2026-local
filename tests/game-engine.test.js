@@ -1,4 +1,4 @@
-const gameEngine = require('@forca/engine');
+const gameEngine = require('@forca/engine/index');
 const Config = require('@forca/engine/config');
 const TestDictionary = require('./helpers/test-dictionary');
 
@@ -13,7 +13,7 @@ describe('GameEngine Interface', () => {
   });
 
   describe('startGame()', () => {
-    it('should return a valid GameState object', () => {
+    it('Deve retornar um objeto GameState válido', () => {
       const gameState = gameEngine.startGame();
 
       expect(gameState).toHaveProperty('status');
@@ -28,7 +28,7 @@ describe('GameEngine Interface', () => {
   });
 
   describe('guessLetter()', () => {
-    it('should accept gameState and letter parameters', () => {
+    it('Deveria aceitar gameState e parâmetros de letra', () => {
       const initialState = gameEngine.startGame();
       const updatedState = gameEngine.guessLetter(initialState, 'A');
 
@@ -37,7 +37,7 @@ describe('GameEngine Interface', () => {
       expect(updatedState.status).toBe('RUNNING');
     });
 
-    it('should decrease lives by 1 when the letter is wrong', () => {
+    it('Deveria diminuir as vidas por 1 quando a letra estiver errada', () => {
       // A palavra de teste é "CASA", então "Z" é um palpite errado
       const initialState = gameEngine.startGame();
       const updatedState = gameEngine.guessLetter(initialState, 'Z');
@@ -45,7 +45,7 @@ describe('GameEngine Interface', () => {
       expect(updatedState.lives).toBe(initialState.lives - 1);
     });
 
-    it('should add the guessed letter to guesses', () => {
+    it('Deveria adicionar a letra adivinhada a palpites', () => {
       const initialState = gameEngine.startGame();
       const updatedState = gameEngine.guessLetter(initialState, 'Z');
 
@@ -78,7 +78,7 @@ describe('GameEngine Interface', () => {
   });
 
   describe('version()', () => {
-    it('should return a version string', () => {
+    it('Deveria retornar uma string de versão', () => {
       const version = gameEngine.version();
       expect(typeof version).toBe('string');
       expect(version.length).toBeGreaterThan(0);
