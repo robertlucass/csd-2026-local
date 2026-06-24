@@ -60,11 +60,9 @@ Then(
   },
 );
 
-
 When("eu palpito as letras {string}", function (letras) {
   currentGameState = gameEngine.guessLetter(currentGameState, letras);
 });
-
 
 Then('meu número de vidas deve continuar o mesmo', function () {
   assert.strictEqual(currentGameState.lives, initialGameState.lives);
@@ -77,6 +75,22 @@ Then('eu devo ver uma mensagem dizendo que o palpite está incorreto', function 
 Then('o status do jogo deve permanecer {string}', function (status) {
   // Write code here that turns the phrase above into concrete actions
   assert.strictEqual(currentGameState.status, status);
+});
+
+Given('que o timer do jogo está em {int} segundos', function (int) {
+  currentGameState.timer = int;
+});
+
+When('eu deixo o jogo rodar por {int} segundos sem palpitar', function (int) {
+  GameEngine.handleEvent("tick", { time: int }, currentGameState);
+});
+
+Then('o status do jogo deve mudar para {string}', function (string) {
+  assert.strictEqual(currentGameState.status, string);
+});
+
+Then('eu devo ver uma mensagem dizendo que o tempo acabou', function () {
+  assert.match(currentGameState.message, /O tempo acabou/);
 });
 
 Then('as letras {string} devem ser adicionadas aos meus palpites', function (letras) {

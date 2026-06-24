@@ -55,6 +55,15 @@ class GameEngine {
   }
 
   handleEvent(event, data, currentGameState) {
+    if (event == 'tick') {
+      currentGameState.timer -= data.time;
+    }
+
+    if (currentGameState.timer <= 0) {
+      currentGameState.status = 'LOST';
+      currentGameState.message = 'O tempo acabou';
+    }
+
     return currentGameState;
   }
 

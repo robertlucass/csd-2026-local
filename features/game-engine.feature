@@ -21,3 +21,9 @@ Funcionalidade: Motor do Jogo - Palpitar Letra
     Então meu número de vidas deve continuar o mesmo
     E eu devo ver uma mensagem dizendo que o palpite está incorreto
     Mas o status do jogo deve permanecer "RUNNING"
+
+  Cenário: Timer do jogador estoura
+    Dado que o timer do jogo está em 30 segundos
+    Quando eu deixo o jogo rodar por 30 segundos sem palpitar
+    Então o status do jogo deve mudar para "LOST"
+    E eu devo ver uma mensagem dizendo que o tempo acabou
